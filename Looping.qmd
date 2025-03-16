@@ -12,4 +12,14 @@ library(ggpubr)
 
 ```{r}
 source("R/function.R")
+possible_cars = data.frame(name = c("A", "B", "C", "D"),
+                           cylinders = c(2, 4, 6, 8),
+                           horsepower = c(50, 200, 400, 1000),
+                           weight = c(500, 4000, 5000, 6000))
+speed_base = 80
+
+possible_cars$power = autopower(V = speed_base, A = possible_cars$area, 
+                                m = possible_cars$mass)
+
+head(possible_cars)
 ```
