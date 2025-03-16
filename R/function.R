@@ -1,12 +1,15 @@
 
-#' Engine Performance Estimator
+#' Engine Performance Estimation
 #' 
 #' This function estimates fuel efficiency (MPG) and acceleration (0-60 mph time)
 #' based on engine cylinders, horsepower, and vehicle weight.
 #' 
-#' @param cylinders Integer (2, 4, 6, or 8) - Number of engine cylinders
+#' @param cylinders Number of engine cylinders (2, 4, 6, or 8)
 #' @param horsepower Horsepower of the engine
-#' @param weight Vehicle weight (kg)
+#' @param weight Vehicle weight (lbs)
+#' @param 500 constant value for scaling mpg range
+#' @param 1000 constant value for scaling weight
+#' @param 2 constant value for scaling acceleration
 #' 
 #' @return A list with estimated MPG and acceleration time
 
@@ -17,18 +20,18 @@ engine_performance <- function(cylinders, horsepower, weight) {
     stop("Horsepower must be greater than 0")
   }
   
-  # It is known that vehicle weight greater than 100,000 kilograms is very unlikely 
+  # It is known that vehicle weight greater than 10,000 lbs is very unlikely 
   # so if we get that something is probably wrong so we warn the user 
   # (but we let the function continue just in case)
-  if (any(weight > 100000)) {
+  if (any(weight > 10000)) {
     warning("Unrealistically high vehicle weight (kg)")
   }
   
-  # Fuel Efficiency Calculation
+  # Fuel efficiency calculation
   mpg <- 500 / (cylinders * horsepower * (weight / 1000))
   
-  # Acceleration Calculation
+  # Acceleration calculation
   acceleration <- (weight * cylinders) / (horsepower * 2)
   
-  return(list(MPG = round(mpg, 2), Acceleration = round(acceleration, 2)))
+  return(mpg, acceleration)
 }
