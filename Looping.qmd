@@ -46,9 +46,12 @@ engine_performance_loop = as.data.frame(matrix(nrow = length(speed_distribution)
 
 ```{r}
 #For Loop
-for (i in 1:ncol(engine_performance)) {
-  engine_performance[,i] = engine_performance(A = possible_cars$area[i], 
-                            m = possible_cars$mass[i], 
-                            V = speeds)
+for (i in 1:ncol(engine_performance_loop)) {
+  engine_performance_loop[,i] = engine_performance( cylinders = possible_cars$cylinders[i],horsepower = possible_cars$horsepower[i],weight = possible_cars$weight[i])
 }
+```
+
+```{r}
+#add column names
+colnames(engine_performance) = possible_cars$name
 ```
