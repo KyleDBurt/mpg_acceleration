@@ -11,5 +11,5 @@ library(ggpubr)
 ```
 
 ```{r}
-
+source("R/function.R")
 ```
