@@ -15,25 +15,16 @@
 
 engine_performance <- function(cylinders, horsepower, weight) {
   
-  # Exit the function prematurely based on invalid inputs
   if (any(horsepower < 0)) {
     stop("Horsepower must be greater than 0")
   }
   
-  # It is known that vehicle weight greater than 10,000 lbs is very unlikely 
-  # so if we get that something is probably wrong so we warn the user 
-  # (but we let the function continue just in case)
   if (any(weight > 10000)) {
     warning("Unrealistically high vehicle weight (kg)")
   }
   
-  # Fuel efficiency calculation
-  mpg <- function(cylinders, horsepower, weight) {
-    return(500 / (cylinders * horsepower * (weight / 1000)))
-  }
+  mpg_value <- 500 / (cylinders * horsepower * (weight / 1000))
+  acceleration <- (weight * cylinders) / (horsepower * 2)
   
-  # Acceleration calculation
-  acceleration = (weight * cylinders) / (horsepower * 2)
-  
-  return(mpg, acceleration)
+  return(list(mpg = mpg_value, acceleration = acceleration))
 }

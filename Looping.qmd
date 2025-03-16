@@ -19,9 +19,15 @@ possible_cars = data.frame(name = c("A", "B", "C", "D"),
                            weight = c(500, 4000, 5000, 6000))
 speed_base = 80
 
-possible_cars$mpg = mpg(cylinders = possible_cars$cylinders, 
-                        horsepower = possible_cars$horsepower, 
-                        weight = possible_cars$weight)
+# Apply function to each row
+performance_results <- mapply(engine_performance, 
+                              cylinders = possible_cars$cylinders, 
+                              horsepower = possible_cars$horsepower, 
+                              weight = possible_cars$weight, 
+                              SIMPLIFY = FALSE)
 
-head(possible_cars)
+# Extract MPG values
+possible_cars$mpg <- sapply(performance_results, function(x) x$mpg)
+possible_cars$acceleration <- sapply(performance_results, 
+                                     function(x) x$acceleration)
 ```
