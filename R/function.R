@@ -28,7 +28,9 @@ engine_performance <- function(cylinders, horsepower, weight) {
   }
   
   # Fuel efficiency calculation
-  mpg = 500 / (cylinders * horsepower * (weight / 1000))
+  mpg <- function(cylinders, horsepower, weight) {
+    return(500 / (cylinders * horsepower * (weight / 1000)))
+  }
   
   # Acceleration calculation
   acceleration = (weight * cylinders) / (horsepower * 2)
