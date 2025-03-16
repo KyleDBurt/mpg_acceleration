@@ -1,0 +1,15 @@
+---
+title: "Looping"
+format: html
+editor: visual
+---
+
+```{r}
+library(tidyverse)
+library(purrr)
+library(ggpubr)
+```
+
+```{r}
+
+```
