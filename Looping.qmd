@@ -26,8 +26,29 @@ performance_results <- mapply(engine_performance,
                               weight = possible_cars$weight, 
                               SIMPLIFY = FALSE)
 
-# Extract MPG values
+# Extract MPG and acceleration values
 possible_cars$mpg <- sapply(performance_results, function(x) x$mpg)
 possible_cars$acceleration <- sapply(performance_results, 
                                      function(x) x$acceleration)
+```
+
+```{r}
+nsample = 150
+mean_speed = 80
+standard_deviation_speed = 5
+speed_distribution = rnorm(nsample, mean = mean_speed, sd = standard_deviation_speed)
+
+```
+
+```{r}
+engine_performance_loop = as.data.frame(matrix(nrow = length(speed_distribution), ncol = nrow(possible_cars)))
+```
+
+```{r}
+#For Loop
+for (i in 1:ncol(engine_performance)) {
+  engine_performance[,i] = engine_performance(A = possible_cars$area[i], 
+                            m = possible_cars$mass[i], 
+                            V = speeds)
+}
 ```
