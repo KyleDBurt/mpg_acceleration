@@ -12,6 +12,8 @@ library(ggpubr)
 
 # Set seed
 
+Set seed to general 123.
+
 ```{r}
 set.seed(123)
 ```
