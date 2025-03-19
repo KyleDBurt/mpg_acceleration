@@ -4,7 +4,7 @@
 #' This function estimates fuel efficiency (MPG) and acceleration (0-60 mph time)
 #' based on engine cylinders, horsepower, and vehicle weight.
 #' 
-#' @param cylinders Number of engine cylinders (2, 4, 6, or 8)
+#' @param cylinders Number of engine cylinders (4)
 #' @param horsepower Horsepower of the engine
 #' @param weight Vehicle weight (lbs)
 #' 
